@@ -8,6 +8,17 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Data;
+using MySql.Data.MySqlClient;
+
+/*
+todo IoC(Inversion of Control) Configuration:
+Follow the steps in this document:
+IoC Configuration https://docs.google.com/document/d/1Yc4m-pfc1R0gPSRqQoIZ8dc8GXX3WQa8UXt7S1KoqQM/edit?usp=sharing
+        open Startup.cs --> 
+        Add code from the IoC Configuration document
+        to the ConfigureServices method
+*/
 
 namespace ASPNET
 {
@@ -23,6 +34,17 @@ namespace ASPNET
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddScoped<IDbConnection>((s) =>
+            {
+                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("bestbuy"));
+                conn.Open();
+
+                return conn;
+            });
+
+            services.AddTransient<IProductRepository, ProductRepository>();
+
             services.AddControllersWithViews();
         }
 
