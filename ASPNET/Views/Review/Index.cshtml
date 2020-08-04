@@ -1,0 +1,43 @@
+﻿@*
+    notice the foreach loop, includes the C#
+        enabled row but not the full table
+        within its scope *@
+@{
+}
+
+@model IEnumerable<Review>
+
+
+<h2>Reviews</h2>
+<div style="display:block"><a href="/Review/InsertReview/">Create a New Review</a> </div>
+
+<table class="table">
+    <tr>
+        <th>Review ID</th>
+        <th>Product ID</th>
+        <th>Reviewer</th>
+        <th>Rating</th>
+        <th>Comment</th>
+        <th>Category</th>
+    </tr>
+
+    @foreach (var review in Model)
+
+    {
+
+<tr>
+    <td><a href=/Review/ViewReview/@review.ReviewID>@review.ReviewID</a></td>
+
+    <td>@review.ReviewID</td>
+    <td>@review.ProductID</td>
+    <td>@review.Reviewer</td>
+    <td>@review.Ratings</td>
+    <td>@review.Comment</td>
+    <td>@review.Categories</td>
+
+</tr>
+    }
+</table>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@

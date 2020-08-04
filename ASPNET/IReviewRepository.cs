@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ASPNET.Models;
+using System.Data;
 
 /*todo For now, we will just add one stubbed out method → GetAllProducts
 //todo check using directive
@@ -20,24 +21,26 @@ todo Step 1. IProductRepository - stubbed out DeleteProduct method
 
 namespace ASPNET
 {
-    public interface IProductRepository
+    public interface IReviewRepository
     {
-        public void InsertProduct(Product productToInsert);
+        public void InsertReview(Review reviewToInsert);
 
-        public IEnumerable<Product> GetAllProducts();
+        public IEnumerable<Review> GetAllReviews();
 
-        public Product GetProduct(int id);
+        public Review GetReview(int id);
 
-        public void UpdateProduct(Product product);
+        public void UpdateReview(Review review);
 
 
-        public Product AssignCategory();
+        public Review AssignCategory();
 
-        public void DeleteProduct(Product product);
+        public Review AssignRating();
+
+        public void DeleteReview(Review review);
 
         public IEnumerable<Category> GetCategories();
 
-
+        public IEnumerable<Rating> GetRatings();
 
     }
 }

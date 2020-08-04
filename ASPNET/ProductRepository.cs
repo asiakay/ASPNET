@@ -3,6 +3,8 @@ using System.Data;
 using System.Collections.Generic;
 using Dapper;
 using ASPNET.Models;
+using Dapper.Contrib;
+using Dapper.Contrib.Extensions;
 
 /*
 todo Create the ProductRepository Class that will conform to
@@ -28,11 +30,6 @@ todo Step 5. Create Implementation of the GetCategories() method in the ProductR
 Create Implementation of the AssignCategory() Method in the ProductRepository
 **** Part Five Delete Products ****
 todo Step 2. ProductRepository - create implementation of the DeleteProduct method
-
-
-
-
-
  */
 
 namespace ASPNET
@@ -54,8 +51,10 @@ IDbConnection as a parameter argument
 // IEnumerable supports a simple iteration over a collection
         // of a specified type
         {
-            return _conn.Query<Product>("SELECT * FROM PRODUCTS;");
-// Return type is the connection to the data source
+            //return _conn.Query<Product>("SELECT * FROM PRODUCTS;");
+            return _conn.GetAll<Product>(); // Dapper.Contrib Dependency
+
+            // Return type is the connection to the data source
             //and query results from database
         }
         public Product GetProduct(int id)
@@ -86,7 +85,8 @@ IDbConnection as a parameter argument
         // todo Step 5. Create Implementation of the GetCategories()Method, and AssignCategory() method.
         public IEnumerable<Category> GetCategories()
         {
-            return _conn.Query<Category>("SELECT * FROM categories;");
+            return _conn.Query<Category>("SELECT * FROM categories;"); // regular dapper 
+
         }
         public Product AssignCategory()
         {

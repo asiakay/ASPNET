@@ -1,4 +1,7 @@
-/*TODO 1) Fork and Clone this repository https://github.com/mvdoyle/ASPNET
+/*ASP.NET MVC Introduction https://docs.google.com/document/d/1GbCDvMYxkZNBL2fMGwgplly_cY3lv9iDsiamNiRxVxo/edit
+ * 
+ * 
+ * TODO 1) Fork and Clone this repository https://github.com/mvdoyle/ASPNET
 
 //TODO 2) Delete your appsettings.json file
 //TODO Right click project folder select Display options if hidden files are unseen in solution
@@ -94,27 +97,15 @@ todo Step 4. ViewProduct.cshtml View - add html to allow user to trigger DeleteP
         <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this product" />
     }
 </div>
-Add a view https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-view?view=aspnetcore-3.1&tabs=visual-studio
-todo Step 1. Right click on the Views folder, and then Add > New Folder and
-name the folder HelloWorld.
-todo Right click on the Views/HelloWorld folder, and then Add > New Item.
-todo In the Add New Item - dialog
-Select Razor View
-Keep the Name box value, Index.cshtml.
-Select Add or New.
-todo Replace the contents of the Views/HelloWorld/Index.cshtml Razor view
-file with the following:
-@{
-    ViewData["Title"] = "Index";
-}
+July 31st, 2020
+//todo [dapper.Contrib.Extensions.Key] in Product Class
+//todo add dependecy injection package
 
-<h2>Index</h2>
-
-<p>Hello from our View Template!</p>
-
-
-
-
+in Startup.cs Add idbconnection to repository to return open sql connection
+services.AddTransient<IproductRepository, ProductRepository>()
+//todo [dapper.Contrib.Extensions.Key] in Product Class
+//todo add dependecy injection package
+ * add using directives to shared view, viewImports.cshtml page 
 
 
 
@@ -130,6 +121,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+
 
 namespace ASPNET
 {
